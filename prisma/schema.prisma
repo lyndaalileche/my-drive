@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Categorie {
+  id_categorie      Int                 @id(map: "categorie_pkey") @unique(map: "categorie_id_categorie_key") @default(autoincrement())
+  type              Int
+  image             String?             @db.VarChar(50)
+  name              String              @db.VarChar(50)
+  Produit_Categorie Produit_Categorie[]
+}
+
+model Favori {
+  id_user       Int
+  id_produit    Int
+  id_favoris    Int           @unique(map: "favori_id_favoris_key")
+  Produit       Produit       @relation(fields: [id_produit], references: [id_produit], onDelete: NoAction, onUpdate: NoAction, map: "favori_id_produit_fkey")
+  User_Customer User_Customer @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction, map: "favori_id_user_fkey")
+
+  @@id([id_user, id_produit], map: "favori_pkey")
+}
+
+model Marque {
+  id_marque Int       @id(map: "marque_pkey") @unique(map: "marque_id_marque_key") @default(autoincrement())
+  titre     String    @db.VarChar(50)
+  Produit   Produit[]
+}
+
+model Panier {
+  id_user       Int
+  id_produit    Int
+  id_panier     Int           @unique(map: "panier_id_panier_key")
+  date_panier   DateTime      @db.Date
+  Produit       Produit       @relation(fields: [id_produit], references: [id_produit], onDelete: NoAction, onUpdate: NoAction, map: "panier_id_produit_fkey")
+  User_Customer User_Customer @relation(fields: [id_user], references: [id_user], onDelete: NoAction, onUpdate: NoAction, map: "panier_id_user_fkey")
+
+  @@id([id_user, id_produit], map: "panier_pkey")
+}
+
+model Produit {
+  id_produit        Int                 @id(map: "produit_pkey") @default(autoincrement())
+  titre             String              @db.VarChar(50)
+  description       String
+  image             String
+  prix              Decimal             @db.Decimal(15, 2)
+  poids             Decimal?            @db.Decimal(15, 2)
+  price_kg          Decimal?            @db.Decimal(15, 2)
+  price_liter       Decimal?            @db.Decimal
+  id_marque         Int
+  Favori            Favori[]
+  Panier            Panier[]
+  Marque            Marque              @relation(fields: [id_marque], references: [id_marque], onDelete: NoAction, onUpdate: NoAction, map: "produit_id_marque_fkey")
+  Produit_Categorie Produit_Categorie[]
+  Produit_Promotion Produit_Promotion[]
+}
+
+model Produit_Categorie {
+  id_produit   Int
+  id_categorie Int
+  Categorie    Categorie @relation(fields: [id_categorie], references: [id_categorie], onDelete: NoAction, onUpdate: NoAction, map: "posséder_id_categorie_fkey")
+  Produit      Produit   @relation(fields: [id_produit], references: [id_produit], onDelete: NoAction, onUpdate: NoAction, map: "posséder_id_produit_fkey")
+
+  @@id([id_produit, id_categorie], map: "posséder_pkey")
+}
+
+model Produit_Promotion {
+  id_produit   Int
+  id_promotion Int
+  Produit      Produit   @relation(fields: [id_produit], references: [id_produit], onDelete: NoAction, onUpdate: NoAction, map: "appartenir_id_produit_fkey")
+  Promotion    Promotion @relation(fields: [id_promotion], references: [id_promotion], onDelete: NoAction, onUpdate: NoAction, map: "appartenir_id_promotion_fkey")
+
+  @@id([id_produit, id_promotion], map: "appartenir_pkey")
+}
+
+model Promotion {
+  id_promotion      Int                 @id(map: "promotion_pkey") @default(autoincrement())
+  name              String              @db.VarChar(50)
+  description       String              @db.VarChar(500)
+  date_debut        DateTime?           @db.Date
+  date_fin          DateTime?           @db.Date
+  Produit_Promotion Produit_Promotion[]
+}
+
+model User_Customer {
+  id_user   Int      @id(map: "user_customer_pkey") @default(autoincrement())
+  name      String   @db.VarChar(50)
+  last_name String   @db.VarChar(50)
+  email     String   @db.VarChar(50)
+  password  String?  @db.VarChar(50)
+  Favori    Favori[]
+  Panier    Panier[]
+}
