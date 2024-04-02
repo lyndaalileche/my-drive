@@ -10,7 +10,7 @@ datasource db {
 model Categorie {
   id_categorie      Int                 @id(map: "categorie_pkey") @unique(map: "categorie_id_categorie_key") @default(autoincrement())
   type              Int
-  image             String?             @db.VarChar(50)
+  image             String?
   name              String              @db.VarChar(50)
   Produit_Categorie Produit_Categorie[]
 }
@@ -80,7 +80,7 @@ model Produit_Promotion {
 model Promotion {
   id_promotion      Int                 @id(map: "promotion_pkey") @default(autoincrement())
   name              String              @db.VarChar(50)
-  description       String              @db.VarChar(500)
+  description       String
   date_debut        DateTime?           @db.Date
   date_fin          DateTime?           @db.Date
   Produit_Promotion Produit_Promotion[]

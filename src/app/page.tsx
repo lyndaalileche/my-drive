@@ -1,8 +1,10 @@
+import { getAllCategories } from "@/api/getAllCategories";
 import { getAllProducts } from "@/api/getAllProducts";
 
 
 export default async function Home() {
       const products = await getAllProducts();
+      const categories = await getAllCategories();
 
   
   return (
@@ -11,3 +13,5 @@ export default async function Home() {
     </main>
   );
 }
+
+
