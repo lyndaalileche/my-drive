@@ -8,10 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        LucioleBoldItalic: ["var(--font-LucioleBoldItalic)"],
+        LucioleBold: ["var(--font-LucioleBold)"],
+        LucioleRegularItalic: ["var(--font-LucioleRegularItalic)"],
+        LucioleRegular: ["var(--font-LucioleRegular)"],
+      },
+      colors: {
+        turquoise: "#2DB9B9",
+        bleuFonce: "#428996",
+        vert: "#93C323",
+        bleuClaire: "#70B0C3",
       },
     },
   },
