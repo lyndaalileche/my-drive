@@ -1,10 +1,11 @@
+"use client"
+import MentionLegalePage from '@/components/mainMentionLegale';
 
-
-export default async function MentionLegal() {
+export default function MentionLegal() {
    
     return (
       <div>
-  
+        <MentionLegalePage/>
       </div>
     );
   }

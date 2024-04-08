@@ -1,8 +1,14 @@
+"use client"
+import React from 'react';
+import Inscription from '@/components/formulaireInscription'; 
 
-export default async function Home() {
+const InscriptionPage: React.FC = () => {
   return (
-    <main className="">
-      coucou
-    </main>
+    <div>
+      <h1>Inscription</h1>
+      <Inscription /> 
+    </div>
   );
-}
+};
+
+export default InscriptionPage;
