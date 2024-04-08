@@ -1,10 +1,11 @@
+import MainAcceuil from "@/components/mainAccueil";
 
-export default async function Home() {
+export default function Home() {
    
   return (
-    <div>
-
-    </div>
+    <main className="font-LucioleRegular">
+      <MainAcceuil/>
+    </main>
   );
 }
 

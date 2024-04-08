@@ -1,11 +1,10 @@
+import MainProduit from "@/components/mainProduits";
 
 
-export default async function Produits() {
-   
+export default function Produits() {
     return (
-      <div>
-  
-      </div>
+        <main className="font-LucioleRegular">
+            <MainProduit/>
+        </main>
     );
-  }
-  
+}

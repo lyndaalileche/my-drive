@@ -1,11 +1,7 @@
 
-
-export default async function Favori() {
-   
+export default function Favoris() {
     return (
-      <div>
-  
-      </div>
+        <div>
+        </div>
     );
-  }
-  
+}
