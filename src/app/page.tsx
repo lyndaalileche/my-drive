@@ -1,10 +1,11 @@
+import Inscription from "@/components/formulaireInscription";
+
 
 export default async function Home() {
-   
   return (
-    <div>
-
-    </div>
+    <main className="">
+      <Inscription/>
+    </main>
   );
 }
 
