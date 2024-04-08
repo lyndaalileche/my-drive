@@ -93,9 +93,19 @@ const Inscription: React.FC = () => {
           )}
         </div>
         <div className="flex justify-between items-center">
-      <button type="submit" className="w-full bg-vert text-white px-4 py-2 rounded-lg hover:bg-green-500 "> Valider votre inscription</button>
-          <div className="w-20"></div>
-          <button type="button" className="bg-white text-black px-4 py-1 rounded-2xl border border-black hover:bg-gray-200">Annuler</button>
+          <button
+            type="submit"
+            className="w-full bg-vert text-white px-4 py-1 rounded-2xl  hover:bg-green-600"
+          >
+            Valider votre inscription
+          </button>
+          <div className="w-20"></div> {/* Espace entre les boutons */}
+          <button
+            type="button"
+            className="bg-white text-black px-4 py-1 rounded-2xl border border-black hover:bg-gray-200 "
+          >
+            Annuler
+          </button>
         </div>
     </form>
     </div>
