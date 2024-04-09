@@ -1,12 +1,12 @@
+import Navbar from "@/components/navbar";
 import MainAcceuil from "@/components/mainAccueil";
-
-export default function Home() {
-   
+export default async function Home() {
   return (
-    <main className="font-LucioleRegular">
-      <MainAcceuil/>
-    </main>
+    <div>
+      <Navbar/>
+      <main className="font-LucioleRegular">
+      <MainAcceuil/>  
+      </main>
+    </div>
   );
 }
-
-
