@@ -7,7 +7,6 @@ export default function CarteProduitListe(props: any) {
     const [isFavorite, setIsFavorite] = useState("black");
     const [isVisible, setIsVisible] = useState("hidden");
     const [count, setCount] = useState(0);
-    const [productFavorite, setproductFavorite] = useState<any>();
 
     const handleFavoriteClick = (event : any) => {
         const favoriteProduct = isFavorite === "black" ?  "red" : "black";
@@ -46,10 +45,10 @@ export default function CarteProduitListe(props: any) {
                                 {props.piece}
                             </p>
                             <div className="flex items-center my-1">
-                                <p className="border-gray-300 border rounded-full text-center mr-1 w-1/2 h-auto">
+                                <p className="border-gray-300 border rounded-full text-center mr-0.5 px-1 w-1/2 h-auto">
                                     {props.poids}
                                 </p>
-                                <p className="ml-1 my-1 w-1/2">
+                                <p className="ml-0.5 my-1 w-1/2">
                                     {props.prix_kg_ou_litre}
                                 </p>
                             </div>

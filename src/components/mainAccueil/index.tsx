@@ -1,29 +1,37 @@
+"use client";
+
 import Link from "next/link";
-import getProduitWithMarqueAndCategorie from "@/api/getProduitWithMarqueAndCategorie";
 import CarteProduitListe from "../carteProduitListe";
+import { useEffect, useState } from "react";
+import { Categorie, Marque, Produit, Produit_Categorie } from "@prisma/client";
 
-export default async function MainAccueil() {
-    const productsData = await getProduitWithMarqueAndCategorie();
-    const productsWithParsedDecimal = productsData.map((product: any) => ({
-        ...product,
-        marque: product.Marque.titre,
-        prix: (product.prix + " € ").replace(".",","),
-        poids: product.poids + " g ",
-        prix_kg_ou_litre: product.price_kg
-            ? (product.price_kg + " €/kg ").replace(".",",")
-            : (product.price_liter + " €/l").replace(".",","),
-        piece: " 1 pièce",
-        categorie_1: product.Produit_Categorie.map((item: any) =>
-            item.Categorie.type === 1 ? item.Categorie.name : null
-        ),
-        categorie_2: product.Produit_Categorie.map((item: any) =>
-            item.Categorie.type === 2 ? item.Categorie.name : null
-        ),
-    }));
+type Products = {
+    produits: Produit[];
+    marque: Marque[];
+    produit_categorie: Produit_Categorie[];
+    categorie: Categorie[];
+};
 
-    const shuffledProducts = productsWithParsedDecimal.sort(
-        () => Math.random() - 0.5
-    );
+export default function MainAccueil() {
+    const [produits, setProduits] = useState<Products[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/api/products");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+                setProduits(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const shuffledProducts = produits.sort(() => Math.random() - 0.5);
 
     const randomProductsPromotionList = shuffledProducts.slice(0, 4);
 
@@ -50,7 +58,7 @@ export default async function MainAccueil() {
                     </div>
                 </div>
             </div>
-            <div className="my-10 ">
+            <div className="my-10">
                 <p className="text-red-700 text-center text-lg uppercase lg:text-xl xl:text-2xl">
                     !!! Promo !!!
                 </p>
@@ -58,16 +66,33 @@ export default async function MainAccueil() {
                     <div className="flex flex-wrap justify-center items-center mb-2">
                         {randomProductsPromotionList.map((item: any) => (
                             <CarteProduitListe
+                                key={item.id_produit}
                                 id={item.id_produit}
-                                marque={item.marque}
+                                marque={item.Marque.titre}
                                 title={item.titre}
+                                piece={"1 pièce"}
                                 image={item.image}
-                                piece={item.piece}
-                                poids={item.poids}
-                                prix_kg_ou_litre={item.prix_kg_ou_litre}
-                                categorie_1={item.categorie_1}
-                                categorie_2={item.categorie_2}
-                                prix={item.prix}
+                                poids={item.poids + " g"}
+                                prix_kg_ou_litre={
+                                    item.price_kg
+                                        ? item.price_kg.replace(".", ",") +
+                                          " €/kg"
+                                        : item.price_liter.replace(".", ",") +
+                                          " €/l"
+                                }
+                                categorie_1={item.Produit_Categorie.map(
+                                    (item: any) =>
+                                        item.Categorie.type === 1
+                                            ? item.Categorie.name
+                                            : null
+                                )}
+                                categorie_2={item.Produit_Categorie.map(
+                                    (item: any) =>
+                                        item.Categorie.type === 2
+                                            ? item.Categorie.name
+                                            : null
+                                )}
+                                prix={item.prix.replace(".", ",") + " €"}
                             />
                         ))}
                     </div>
@@ -90,21 +115,40 @@ export default async function MainAccueil() {
                 </div>
             </div>
             <div className="my-10">
-                <p className="text-center text-lg lg:text-xl xl:text-2xl">Tous les articles</p>
+                <p className="text-center text-lg lg:text-xl xl:text-2xl">
+                    Tous les articles
+                </p>
                 <div className="flex flex-col items-center bg-bleuClaire p-6">
                     <div className="flex flex-wrap justify-center items-center mb-2 max-w-screen-2xl">
                         {randomProductsList.map((item: any) => (
                             <CarteProduitListe
+                                key={item.id_produit}
                                 id={item.id_produit}
-                                marque={item.marque}
+                                marque={item.Marque.titre}
                                 title={item.titre}
+                                piece={"1 pièce"}
                                 image={item.image}
-                                piece={item.piece}
-                                poids={item.poids}
-                                prix_kg_ou_litre={item.prix_kg_ou_litre}
-                                categorie_1={item.categorie_1}
-                                categorie_2={item.categorie_2}
-                                prix={item.prix}
+                                poids={item.poids + " g"}
+                                prix_kg_ou_litre={
+                                    item.price_kg
+                                        ? item.price_kg.replace(".", ",") +
+                                          " €/kg"
+                                        : item.price_liter.replace(".", ",") +
+                                          " €/l"
+                                }
+                                categorie_1={item.Produit_Categorie.map(
+                                    (item: any) =>
+                                        item.Categorie.type === 1
+                                            ? item.Categorie.name
+                                            : null
+                                )}
+                                categorie_2={item.Produit_Categorie.map(
+                                    (item: any) =>
+                                        item.Categorie.type === 2
+                                            ? item.Categorie.name
+                                            : null
+                                )}
+                                prix={item.prix.replace(".", ",") + " €"}
                             />
                         ))}
                     </div>

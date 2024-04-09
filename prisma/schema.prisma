@@ -88,10 +88,10 @@ model Promotion {
 
 model User_Customer {
   id_user   Int      @id(map: "user_customer_pkey") @default(autoincrement())
-  name      String   @db.VarChar(50)
-  last_name String   @db.VarChar(50)
-  email     String   @db.VarChar(50)
-  password  String?  @db.VarChar(50)
+  name      String
+  last_name String
+  email     String
+  password  String
   Favori    Favori[]
   Panier    Panier[]
 }
