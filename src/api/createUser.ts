@@ -1,6 +1,6 @@
 import prisma from "@/libs/prismadb";
 import { User_Customer } from '@prisma/client'; 
-// Définition du type pour les données utilisateur
+
 type UserData = {
     name: string;
     last_name: string;
