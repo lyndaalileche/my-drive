@@ -1,11 +1,8 @@
 
-
-export default async function Inscription() {
-   
-    return (
-      <div>
-  
-      </div>
-    );
-  }
-  
+export default async function Home() {
+  return (
+    <main className="">
+      coucou
+    </main>
+  );
+}
