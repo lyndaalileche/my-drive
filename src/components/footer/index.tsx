@@ -1,17 +1,22 @@
 import React from 'react';
 
-
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-4 absolute bottom-0 w-full"> 
+    <footer className="bg-gray-900 text-white py-4 mt-auto">
       <div className="container mx-auto text-center">
-        <p>Mention légale et CGU</p>
-        <p>CGU</p>
-        <p>Charte de protection des données personnelles</p>
-        <p>Tout droit réservé || Les Parfaits</p>
+        <p>
+          <a href="/cgv">Conditions Générales de Vente</a>
+        </p>
+        <p>
+          <a href="/CharteDesDonnees">Charte des données</a>
+        </p>
+        <p>
+          <a href="/mentionLegal">Mentions Légales</a>
+        </p>
+        <p className="mt-4">Tous droits réservés © 2024 PerfectDriver</p>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
