@@ -67,7 +67,7 @@ export default function MainAccueil() {
                         {randomProductsPromotionList.map((item: any) => (
                             <CarteProduitListe
                                 key={item.id_produit}
-                                id={item.id_produit}
+                                id_produit={item.id_produit}
                                 marque={item.Marque.titre}
                                 title={item.titre}
                                 piece={"1 pièce"}
@@ -123,7 +123,7 @@ export default function MainAccueil() {
                         {randomProductsList.map((item: any) => (
                             <CarteProduitListe
                                 key={item.id_produit}
-                                id={item.id_produit}
+                                id_produit={item.id_produit}
                                 marque={item.Marque.titre}
                                 title={item.titre}
                                 piece={"1 pièce"}
