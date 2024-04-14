@@ -85,7 +85,7 @@ export default function CarteProduitListe(props: any) {
                                 className={`mr-1 ${isVisible}`}
                                 onClick={handleRemoveClick}
                             >
-                                <img src="./svg/remove.svg" alt="" />
+                                <img src="/svg/remove.svg" alt="" />
                             </button>
                             <div
                                 className={`border px-2 py-1 w-1/3 text-center ${isVisible}`}
@@ -96,7 +96,7 @@ export default function CarteProduitListe(props: any) {
                                 className="-mt-1.5"
                                 onClick={handleAddClick}
                             >
-                                <img src="./svg/add.svg" alt="" />
+                                <img src="/svg/add.svg" alt="" />
                             </button>
                         </div>
                     </div>
