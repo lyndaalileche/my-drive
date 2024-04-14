@@ -6,12 +6,7 @@ datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
@@ -99,7 +94,6 @@ model User_Customer {
   id_user   Int      @id(map: "user_customer_pkey") @default(autoincrement())
   name      String
   last_name String
-  email     String   @unique
   email     String   @unique
   password  String
   Favori    Favori[]
