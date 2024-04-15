@@ -1,5 +1,6 @@
 "use client";
 
+import BarSearch from "@/components/barSearch";
 import ButtonFilter from "@/components/buttonFilter";
 import FilterProvider from "@/components/context/categorieFilterContext";
 import MainProduits from "@/components/mainProduits";
@@ -13,6 +14,7 @@ export default function Produits(){
     return (
         <main className="font-LucioleRegular">
             <FilterProvider>
+                <BarSearch/>
                 <ButtonFilter/>
                 <MainProduits urlValue={urlValue}/>
             </FilterProvider>
