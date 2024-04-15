@@ -33,7 +33,9 @@ export default function CarteProduitListe(props: any) {
             </Link>
           </div>
           <div className="flex flex-col ml-4 w-1/2">
-            <p className="h-10">{props.marque + " " + props.title}</p>
+            <Link href={`/produit/${props.id_produit}`}>
+              <p className="h-10">{props.marque + " " + props.title}</p>
+            </Link>
             <div className="flex flex-col">
               <p className="border-gray-300 border rounded-full text-center my-1 w-1/2">
                 {props.piece}

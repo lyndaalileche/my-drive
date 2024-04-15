@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import MainProduitDetail from "@/components/mainProduitDetail";
 import Navbar from "@/components/navbar";
 
@@ -17,6 +18,7 @@ export default async function Produit({
         }}
       />
       </main>
+      <Footer/>
     </div>
   );
 }

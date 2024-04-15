@@ -4,6 +4,7 @@ import Link from "next/link";
 import CarteProduitListe from "../carteProduitListe";
 import { useEffect, useState } from "react";
 import { Categorie, Marque, Produit, Produit_Categorie } from "@prisma/client";
+import BarSearch from "../barSearch";
 
 type Products = {
     produits: Produit[];
@@ -42,7 +43,7 @@ export default function MainAccueil() {
             <div
                 className="bg-cover bg-center bg-no-repeat h-32 sm:bg-cover sm:bg-center sm:h-60 lg:bg-top lg:h-96 2xl:bg-cover"
                 style={{ backgroundImage: `url(/img/backgroundRabbit.png)` }}
-            ></div>
+            ><BarSearch/></div>
             <div>
                 <div className="flex justify-center items-center text-bleuClaire text-center uppercase my-4 min-w-440">
                     <div className="w-16 lg:w-20 xl:w-24">
