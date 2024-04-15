@@ -1,56 +1,58 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Categorie, Marque, Produit, Produit_Categorie } from '@prisma/client';
+import { Produit, Marque, Categorie } from '@prisma/client';
 
-// Définir le type Product
 interface Product {
   id_produit: number;
   titre: string;
   description: string;
-  // Ajouter d'autres propriétés au besoin
 }
-type Products = {
-  produits: Produit[];
-  marque: Marque[];
-  produit_categorie: Produit_Categorie[];
-  categorie: Categorie[];
-};
 
-// Définir le composant BarSearch
+interface Products {
+  produits: Produit[];
+  marques: Marque[];
+  categories: Categorie[];
+}
+
 const BarSearch: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
-  const [produits, setProduits] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Products | null>(null);
 
-  // Récupérer les produits côté client
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const response = await fetch("/api/products");
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            const data = await response.json();
-            setProduits(data);
-        } catch (error) {
-            console.error(error);
+      try {
+        const response = await fetch("/api/products");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+        const data: Products = await response.json(); // Assurez-vous que le type de données correspond à Products
+        console.log("Données produits récupérées depuis l'API :", data);
+        setProducts(data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des produits :", error);
+      }
     };
+
     fetchData();
-}, []);
+  }, []);
 
-  // useEffect(() => {
-
-  //   const filteredProducts = produits.filter((product : any) =>
-  //     product.titre.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  //   setSearchResults(filteredProducts);
-  // }, [produits, searchTerm]);
-
- 
-
+  useEffect(() => {
+    if (products && products.produits && searchTerm.trim() !== '') {
+      const filteredProducts = products.produits.filter((product) =>
+        product.titre.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      console.log("Produits filtrés :", filteredProducts);
+      setSearchResults(filteredProducts);
+    } else {
+      console.log("Réinitialisation des résultats de recherche");
+      setSearchResults([]);
+    }
+  }, [products, searchTerm]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value); // Mettre à jour le terme de recherche
+    const newSearchTerm = event.target.value.trim();
+    console.log("Nouveau terme de recherche :", newSearchTerm);
+    setSearchTerm(newSearchTerm);
   };
 
   return (
