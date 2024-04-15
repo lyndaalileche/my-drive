@@ -15,6 +15,8 @@ type Products = {
 
 export default function MainAccueil() {
     const [produits, setProduits] = useState<Products[]>([]);
+    const [dataAllCategories, setDataAllCategories] = useState<any>([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,6 +33,29 @@ export default function MainAccueil() {
         };
         fetchData();
     }, []);
+
+        useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/api/categories");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+                setDataAllCategories(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+    // console.log(dataAllCategories.map((item : any) => item.id_categorie));
+
+    const idCatageories = dataAllCategories.map((item : any) => item.id_categorie);
+
+    const idAllProducts = idCatageories.filter((item : any) => item === 25);
+
+    const idAllProductsPromotion = idCatageories.filter((item : any) => item === 22);
 
     const shuffledProducts = produits.sort(() => Math.random() - 0.5);
 
@@ -99,7 +124,7 @@ export default function MainAccueil() {
                     </div>
                     <div className="flex justify-center my-4 sm:hidden">
                         <Link
-                            href={"./promotions"}
+                            href={`/produits/${idAllProductsPromotion}`}
                             className="bg-white text-bleuFonce rounded-full shadow-gray-700 shadow-[5px_5px_5px_2px_rgba(0,0,0,0.5)] cursor-pointer p-2 text-center hover:scale-105 hover:transition duration-700 ease-linear"
                         >
                             Voir toutes les promotions
@@ -107,7 +132,7 @@ export default function MainAccueil() {
                     </div>
                     <div className="hidden sm:flex sm:justify-end">
                         <Link
-                            href={"./promotions"}
+                            href={`/produits/${idAllProductsPromotion}`}
                             className=" text-white p-2 hover:bg-white hover:text-bleuFonce hover:rounded-full hover:shadow-gray-700 hover:shadow-[5px_5px_5px_2px_rgba(0,0,0,0.5)] hover:transition duration-700 ease-linear"
                         >
                             Voir toutes les promotions
@@ -155,7 +180,7 @@ export default function MainAccueil() {
                     </div>
                     <div className="flex justify-center my-4 sm:hidden">
                         <Link
-                            href={"./produits"}
+                            href={`/produits/${idAllProducts}`}
                             className="bg-white text-bleuFonce rounded-full shadow-gray-700 shadow-[5px_5px_5px_2px_rgba(0,0,0,0.5)] cursor-pointer p-2 text-center hover:scale-105 hover:transition duration-1000 ease-linear"
                         >
                             Voir tous les articles
@@ -163,7 +188,7 @@ export default function MainAccueil() {
                     </div>
                     <div className="hidden sm:flex justify-end">
                         <Link
-                            href={"./produits"}
+                            href={`/produits/${idAllProducts}`}
                             className=" text-white p-2 hover:bg-white hover:text-bleuFonce hover:rounded-full hover:shadow-gray-700 hover:shadow-[5px_5px_5px_2px_rgba(0,0,0,0.5)] hover:transition duration-1000 ease-linear"
                         >
                             Voir tous les articles

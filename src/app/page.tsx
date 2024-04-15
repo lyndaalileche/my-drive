@@ -1,14 +1,16 @@
 import Navbar from "@/components/navbar";
-import MainAcceuil from "@/components/mainAccueil";
 import Footer from "@/components/footer";
-export default async function Home() {
+import MainAcceuil from "@/components/mainAccueil";
+
+
+
+export default function Home() {
+   
   return (
-    <div>
+    <main className="font-LucioleRegular">
       <Navbar/>
-      <main className="font-LucioleRegular">
-      <MainAcceuil/> 
+      <MainAcceuil/>
       <Footer/>
-      </main>
-    </div>
+    </main>
   );
 }
