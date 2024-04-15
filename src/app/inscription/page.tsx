@@ -1,14 +1,15 @@
 "use client"
 import React from 'react';
 import Inscription from '@/components/formulaireInscription'; 
+import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
-const InscriptionPage: React.FC = () => {
+export default function InscriptionPage() {
   return (
     <div>
-      <h1>Inscription</h1>
-      <Inscription /> 
+      <Navbar/>
+      <Inscription/>
+      <Footer/> 
     </div>
   );
 };
-
-export default InscriptionPage;

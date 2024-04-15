@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import NavBarCategorie from "../navBarCategorie";
+import LoginForm from "../formulaireConnexion";
 
 export default function Navbar() {
   const [menuOpenRayon, setMenuOpenRayon] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar() {
       {menuOpenConnexion && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"
-          onClick={toggleMenuRayon}
+          onClick={toggleMenuConnexion}
         ></div>
       )}
       <div className="flex items-center justify-between">
@@ -67,7 +68,7 @@ export default function Navbar() {
         <a href="/">
           <div className="flex items-center">
             <img
-              src="image/logo.png"
+              src="/image/logo.png"
               alt="Logo de PerfectDrive"
               className="h-8 w-8"
             />
@@ -156,11 +157,11 @@ export default function Navbar() {
         <NavBarCategorie />
       </div>
       <div
-        className={`font-LucioleRegular absolute z-50 left-0 right-0 mt-8 mx-5 p-10 top-full text-center rounded-2xl bg-white border-turquoise border-4 ${
+        className={`font-LucioleRegular absolute z-50 left-[5%] right-[5%] md:left-[25%] md:right-[25%] mt-8 p-5 md:px-32 md:pb-20 top-full text-center rounded-2xl bg-white border-turquoise border-4 ${
           menuOpenConnexion ? "block" : "hidden"
         }`}
       >
-        <h2 className=" font-LucioleBold text-2xl">Connexion</h2>
+        <LoginForm />
       </div>
     </nav>
   );

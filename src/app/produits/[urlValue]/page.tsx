@@ -2,20 +2,24 @@
 
 import ButtonFilter from "@/components/buttonFilter";
 import FilterProvider from "@/components/context/categorieFilterContext";
+import Footer from "@/components/footer";
 import MainProduits from "@/components/mainProduits";
+import Navbar from "@/components/navbar";
 import { useParams } from "next/navigation";
 
+export default function Produits() {
+  const { urlValue } = useParams();
 
-export default function Produits(){
-    const { urlValue } = useParams();
-
-
-    return (
-        <main className="font-LucioleRegular">
-            <FilterProvider>
-                <ButtonFilter/>
-                <MainProduits urlValue={urlValue}/>
-            </FilterProvider>
-        </main>
-    );
+  return (
+    <div>
+      <Navbar />
+      <main className="font-LucioleRegular">
+        <FilterProvider>
+          <ButtonFilter />
+          <MainProduits urlValue={urlValue} />
+        </FilterProvider>
+      </main>
+      <Footer />
+    </div>
+  );
 }
