@@ -1,5 +1,6 @@
 "use client";
 
+
 import CarteProduitListe from "../carteProduitListe";
 import { useContext, useEffect, useState } from "react";
 import { Categorie, Marque, Produit, Produit_Categorie } from "@prisma/client";
@@ -59,14 +60,14 @@ export default function MainProduits({ urlValue }: any) {
 
 
     function showTitlePages({ value }: any) {
-        if (value === "25") {
+        if (urlValue === "25") {
             return (
                 <h1 className="text-xl lg:text-2xl xl:text-3xl">
                     Tous les articles
                 </h1>
             );
         }
-        if (value === "22") {
+        if (urlValue === "22") {
             return (
                 <h1 className="text-red-700 uppercase text-xl lg:text-2xl xl:text-3xl">
                     !!! Promo !!!

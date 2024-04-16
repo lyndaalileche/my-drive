@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-4 mt-auto">
+    <footer className="bg-[#15052A] text-white py-4 mt-auto">
       <div className="container mx-auto text-center">
         <p>
           <a href="/cgv">Conditions Générales de Vente</a>
