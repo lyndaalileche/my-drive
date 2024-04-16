@@ -8,8 +8,6 @@ const PasswordRecoveryForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-
-
     try {
       const response = await fetch('http://localhost:3001/request-reset-password', {
 
