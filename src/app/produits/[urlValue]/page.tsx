@@ -2,7 +2,9 @@
 
 import ButtonFilter from "@/components/buttonFilter";
 import FilterProvider from "@/components/context/categorieFilterContext";
+import Footer from "@/components/footer";
 import MainProduits from "@/components/mainProduits";
+import Navbar from "@/components/navbar";
 import { useParams } from "next/navigation";
 
 
@@ -13,8 +15,10 @@ export default function Produits(){
     return (
         <main className="font-LucioleRegular">
             <FilterProvider>
+                <Navbar/>
                 <ButtonFilter/>
                 <MainProduits urlValue={urlValue}/>
+                <Footer/>
             </FilterProvider>
         </main>
     );
