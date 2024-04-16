@@ -68,11 +68,7 @@ export default function Navbar() {
         <a href="/">
           <div className="flex items-center">
             <img
-<<<<<<< HEAD
               src="image/Logo.png"
-=======
-              src="/image/logo.png"
->>>>>>> cff7f3d11b4eaa32954dca756c8419efb2ab92c0
               alt="Logo de PerfectDrive"
               className="h-8 w-8"
             />

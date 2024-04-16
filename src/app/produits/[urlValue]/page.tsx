@@ -16,6 +16,7 @@ export default function Produits() {
             <Navbar />
             <main className="font-LucioleRegular">
                 <FilterProvider>
+                    <BarSearch/>
                     <ButtonFilter />
                     <MainProduits urlValue={urlValue} />
                 </FilterProvider>
