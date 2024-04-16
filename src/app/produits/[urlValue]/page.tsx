@@ -9,15 +9,19 @@ import Navbar from "@/components/navbar";
 import { useParams } from "next/navigation";
 
 export default function Produits() {
-  const { urlValue } = useParams();
+    const { urlValue } = useParams();
 
     return (
-        <main className="font-LucioleRegular">
-            <FilterProvider>
-                <BarSearch/>
-                <ButtonFilter/>
-                <MainProduits urlValue={urlValue}/>
-            </FilterProvider>
-        </main>
+        <div>
+            <Navbar />
+            <main className="font-LucioleRegular">
+                <FilterProvider>
+                    <BarSearch/>
+                    <ButtonFilter />
+                    <MainProduits urlValue={urlValue} />
+                </FilterProvider>
+            </main>
+            <Footer />
+        </div>
     );
 }
