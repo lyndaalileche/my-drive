@@ -8,7 +8,6 @@ interface UserData {
   confirmPassword: string;
 }
 
-
 const Inscription: React.FC = () => {
   const initialUserData: UserData = {
     name: "",
@@ -22,9 +21,8 @@ const Inscription: React.FC = () => {
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [passwordError, setPasswordError] = useState<string>("");
   const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
-
   const handleTermsChange = () => {
-    setAcceptedTerms(!acceptedTerms); // Inverse l'état du bouton lorsque cliqué
+    setAcceptedTerms(!acceptedTerms);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +33,7 @@ const Inscription: React.FC = () => {
   const validatePassword = (password: string) => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     return regex.test(password);
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,6 +42,7 @@ const Inscription: React.FC = () => {
     setPasswordsMatch(true);
     setPasswordError("");
 
+    // Vérifier si les mots de passe correspondent
     if (userData.password !== userData.confirmPassword) {
       setPasswordsMatch(false);
       return;
@@ -58,6 +57,7 @@ const Inscription: React.FC = () => {
         alert("Veuillez accepter les conditions générales d'utilisation.");
         return;
       }
+
       return;
     }
 
@@ -171,7 +171,6 @@ const Inscription: React.FC = () => {
           )}
           {passwordError && <p className="text-red-500">{passwordError}</p>}
         </div>
-        {/* Autres champs de formulaire ici */}
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -183,13 +182,6 @@ const Inscription: React.FC = () => {
           <label htmlFor="acceptTerms" className="text-sm text-gray-700">
             J&apos;accepte les{" "}
             <a href="/cgv" className="text-turquoise">
-              conditions générales d&apos;utilisation
-            </a>
-            {acceptedTerms
-              ? "Utiliser client"
-              : "Ne pas utiliser client"}{" "}
-            {/* Texte inversé du bouton */}
-            <a href="/conditions-generales" className="text-turquoise">
               conditions générales d&apos;utilisation
             </a>
           </label>
@@ -208,13 +200,6 @@ const Inscription: React.FC = () => {
             className="w-full bg-vert text-white px-4 py-1 rounded-2xl shadow-md"
           >
             Valider votre inscription
-          </button>
-          <div className="w-20"></div>
-          <button
-            type="button"
-            className="bg-white text-black px-4 py-1 rounded-2xl border border-black shadow-md"
-          >
-            Annuler
           </button>
         </div>
       </form>
