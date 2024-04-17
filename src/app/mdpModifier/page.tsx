@@ -1,10 +1,9 @@
 import Footer from "@/components/footer";
 import MainMdpModifier from "@/components/mainMdpModifier";
-import PasswordRecoveryForm from "@/components/mainMdpOublier";
 import Navbar from "@/components/navbar";
 
 
-export default async function MdpOublier() {
+export default async function MdpModifier() {
    
     return (
       <div>

@@ -105,7 +105,7 @@ const MonProfil: React.FC = () => {
 
           {/* Section 5: Mot de passe oublié */}
           <div className="mb-4 ">
-            <a href="/Changer-mon-mot-de-passe" className="text-sm text-red-600">
+            <a href="/mdpModifier" className="text-sm text-red-600">
               Changer mon mot de passe
             </a>
           </div>
