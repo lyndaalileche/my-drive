@@ -92,7 +92,7 @@ const MainMdpModifier: React.FC = () => {
                         name="password"
                         value={userDataPassword.password}
                         onChange={handleChange}
-                        // required
+                        required
                         className="w-full px-2 py-1 bg-white border-2 rounded-full shadow-gray-700 shadow-[3px_3px_0_1px_rgba(0,0,0,0.5)]"
                     />
                 </div>
@@ -108,6 +108,7 @@ const MainMdpModifier: React.FC = () => {
                         id="confirmPassword"
                         name="confirmPassword"
                         value={userDataPassword.confirmPassword}
+                        required
                         onChange={handleChange}
                         className="w-full px-2 py-1 bg-white border-2 rounded-full shadow-gray-700 shadow-[3px_3px_0_1px_rgba(0,0,0,0.5)]"
                     />
