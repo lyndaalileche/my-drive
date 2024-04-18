@@ -2,11 +2,11 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 
 // Interface décrivant la structure des données utilisateur attendues
 interface UserData {
-  name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+    name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
 }
 
 // Composant fonctionnel React pour l'inscription
@@ -79,17 +79,17 @@ const Inscription: React.FC = () => {
         body: JSON.stringify(userData),
       });
 
-      if (!response.ok) {
-        throw new Error("La création de l’utilisateur a échoué");
-      }
-      const newUser: UserData = await response.json();
-      console.log("Utilisateur créé avec succès :", newUser);
-      alert("Inscription réussie!");
-    } catch (error) {
-      console.error(error);
-      alert("Erreur lors de la création de l’utilisateur.");
-    }
-  };
+            if (!response.ok) {
+                throw new Error("La création de l’utilisateur a échoué");
+            }
+            const newUser: UserData = await response.json();
+            console.log("Utilisateur créé avec succès :", newUser);
+            alert("Inscription réussie!");
+        } catch (error) {
+            console.error(error);
+            alert("Erreur lors de la création de l’utilisateur.");
+        }
+    };
 
   // Rendu du composant avec le formulaire d'inscription
   return (
