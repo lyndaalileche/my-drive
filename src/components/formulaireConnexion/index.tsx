@@ -98,5 +98,4 @@ const LoginForm: React.FC = () => {
     </div>
   );
 };
-
 export default LoginForm;
