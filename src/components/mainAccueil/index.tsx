@@ -75,7 +75,7 @@ export default function MainAccueil() {
                         <img className="rotate-45" src="/img/cloche.png" />
                     </div>
                     <h1 className="text-xl min-w-440 lg:text-2xl xl:text-3xl">
-                        C'est Paques !
+                        C&apos;est Paques !
                         <br />
                         Chocolat en folie!
                     </h1>
